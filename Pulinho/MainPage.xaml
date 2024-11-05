@@ -6,42 +6,67 @@
              Background="Black">
 
     <Grid>
-        
+        <HorizontalStackLayout x:Name="HSLayerOne">
 
-        <Image
-            Source="background.png"
-            Aspect="AspectFill"/>
+            <Image Source="background.png"
+                   VerticalOptions="StartAndExpand"
+                   Opacity="0.25"
+                   Aspect="AspectFill"/>
+           
+            <Image Source="background.png"
+                   Opacity="0.25"
+                   VerticalOptions="StartAndExpand"
+                   Aspect="AspectFill"/>
+           
+            <Image Source="background.png"
+                   VerticalOptions="StartAndExpand"
+                   Aspect="AspectFill"/>
 
+        </HorizontalStackLayout>
 
-            <Image
-            Source="fogos.png"
-            Aspect="AspectFill"
-            VerticalOptions="CenterAndExpand"
-            Opacity="0.5"/>
+        <HorizontalStackLayout x:Name="HSLayerTwo">
 
-            <Image
-            Source="chao.png"
-            Aspect="AspectFill"
-            VerticalOptions="EndAndExpand"
-            Margin="0,146,0,0"/>
+            
+            <Image Source="fogos.png"
+                   VerticalOptions="FillAndExpand"/>
+           
+            <Image Source="fogos.png"
+                   VerticalOptions="FillAndExpand"/>
+           
+            <Image Source="fogos.png"
+                   VerticalOptions="FillAndExpand"/>
 
+        </HorizontalStackLayout>
 
+        <HorizontalStackLayout x:Name="HSLayerThree">
 
+            
+            <Image Source="fumaca.png"
+                   VerticalOptions="FillAndExpand"/>
+           
+            <Image Source="fumaca.png"
+                   VerticalOptions="FillAndExpand"/>
+           
+            <Image Source="fumaca.png"
+                   VerticalOptions="FillAndExpand"/>
 
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout x:Name="HSLayerPrimalfloor">
+
+          
+           <Image Source="chao.png"
+                   VerticalOptions="EndAndExpand"
+                   Margin="0,50,0,0"/>
+            
+            <Image Source="chao.png"
+                   VerticalOptions="EndAndExpand"
+                   Margin="0,50,0,0"/>
+            
+            <Image Source="chao.png"
+                   VerticalOptions="EndAndExpand"
+                   Margin="0,50,0,0"/>
+
+        </HorizontalStackLayout>
     </Grid>
 </ContentPage>
