@@ -5,36 +5,36 @@ public partial class MainPage : ContentPage
 	//Atributos//
 	//------------------------------------------------------------------------//
 
-	bool Isdead = false;
+	bool Faliceu = false;
 	// se está morto
 
-	bool Isjumping = false;
+	bool Pulinho = false;
 	//se está pulando
 
 	//------------------------------------------------------------------------//
 
-	const int TimeToFrame = 25;
+	const int FPS = 25;
 	//fps
 
 	//------------------------------------------------------------------------//
 
-	int SpeedOne = 0;
+	int Speed1 = 0;
 	//velocidade da primeira camada no caso 
 	// a camada que fica por ultimo
 
-	int SpeedTwo = 0;
+	int Speed2 = 0;
 	//velocidade da segunda camada
 
-	int SpeedThree = 0;
+	int Speed3 = 0;
 	// velocidade da terceira camada
 
-	int PrimalFloorSpeed = 0;
+	int SpeedChao_Boneco = 0;
 	//velocidade do chão ou do boneco tbm
 
-	int WindowHeigth = 0;
+	int altura = 0;
 	//altura da janela 
 
-	int WindowWidth = 0;
+	int largura = 0;
 	//largura da janela
 
 	//------------------------------------------------------------------------//
@@ -84,29 +84,29 @@ public partial class MainPage : ContentPage
 	//------------------------------------------------------------------------//
 	void CalculateSpeed(double w)
 	{
-		SpeedOne = (int)(w * 0.001);
-		SpeedTwo = (int)(w * 0.004);
-		SpeedThree = (int)(w * 0.008);
-		PrimalFloorSpeed = (int)(w * 0.01);
+		Speed1 = (int)(w * 0.001);
+		Speed2 = (int)(w * 0.004);
+		Speed3 = (int)(w * 0.008);
+		SpeedChao_Boneco = (int)(w * 0.01);
 	}
 
 	//------------------------------------------------------------------------//
 	async Task Drawn()
 	{
-		while (!Isdead)
+		while (!Faliceu)
 		{
 			ManageScenes();
-			await Task.Delay(TimeToFrame);
+			await Task.Delay(FPS);
 		}
 	}
 
 	//------------------------------------------------------------------------//
 	void MoveScene()
 	{
-		HSLayerOne.TranslationX -= SpeedOne;
-		HSLayerTwo.TranslationX -= SpeedTwo;
-		HSLayerThree.TranslationX -= SpeedThree;
-		HSLayerPrimalfloor.TranslationX -= PrimalFloorSpeed;
+		HSLayerOne.TranslationX -= Speed1;
+		HSLayerTwo.TranslationX -= Speed2;
+		HSLayerThree.TranslationX -= Speed3;
+		HSLayerPrimalfloor.TranslationX -= SpeedChao_Boneco;
 	}
 
 	//------------------------------------------------------------------------//
@@ -133,6 +133,7 @@ public partial class MainPage : ContentPage
 		}
 	}
 
+	
 
 	//------------------------------------------------------------------------//
 }

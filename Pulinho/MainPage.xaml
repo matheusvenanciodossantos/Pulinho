@@ -19,6 +19,7 @@
                    Aspect="AspectFill"/>
            
             <Image Source="background.png"
+                   Opacity="0.25"
                    VerticalOptions="StartAndExpand"
                    Aspect="AspectFill"/>
 
@@ -28,13 +29,13 @@
 
             
             <Image Source="fogos.png"
-                   VerticalOptions="FillAndExpand"/>
+                   VerticalOptions="Fill"/>
            
             <Image Source="fogos.png"
-                   VerticalOptions="FillAndExpand"/>
+                   VerticalOptions="Fill"/>
            
             <Image Source="fogos.png"
-                   VerticalOptions="FillAndExpand"/>
+                   VerticalOptions="Fill"/>
 
         </HorizontalStackLayout>
 
@@ -42,13 +43,13 @@
 
             
             <Image Source="fumaca.png"
-                   VerticalOptions="FillAndExpand"/>
+                   VerticalOptions="Fill"/>
            
             <Image Source="fumaca.png"
-                   VerticalOptions="FillAndExpand"/>
+                   VerticalOptions="Fill"/>
            
             <Image Source="fumaca.png"
-                   VerticalOptions="FillAndExpand"/>
+                   VerticalOptions="Fill"/>
 
         </HorizontalStackLayout>
 
