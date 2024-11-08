@@ -5,69 +5,66 @@
              Shell.NavBarIsVisible="False"
              Background="Black">
 
-    <Grid>
-        <HorizontalStackLayout x:Name="HSLayerOne">
+       <Grid>
+              <HorizontalStackLayout x:Name="HSLayerOne">
 
-            <Image Source="background.png"
-                   VerticalOptions="StartAndExpand"
-                   Opacity="0.25"
-                   Aspect="AspectFill"/>
-           
-            <Image Source="background.png"
-                   Opacity="0.25"
-                   VerticalOptions="StartAndExpand"
-                   Aspect="AspectFill"/>
-           
-            <Image Source="background.png"
-                   Opacity="0.25"
-                   VerticalOptions="StartAndExpand"
-                   Aspect="AspectFill"/>
+                     <Image Source="fundo.png"
+                            Aspect="AspectFill"/>
 
-        </HorizontalStackLayout>
+                     <Image Source="fundo.png"
+                            Aspect="AspectFill"/>
 
-        <HorizontalStackLayout x:Name="HSLayerTwo">
+                     <Image Source="fundo.png"
+                            Aspect="AspectFill"/>
 
-            
-            <Image Source="fogos.png"
-                   VerticalOptions="Fill"/>
-           
-            <Image Source="fogos.png"
-                   VerticalOptions="Fill"/>
-           
-            <Image Source="fogos.png"
-                   VerticalOptions="Fill"/>
+              </HorizontalStackLayout>
 
-        </HorizontalStackLayout>
+              <HorizontalStackLayout x:Name="HSLayerTwo">
 
-        <HorizontalStackLayout x:Name="HSLayerThree">
 
-            
-            <Image Source="fumaca.png"
-                   VerticalOptions="Fill"/>
-           
-            <Image Source="fumaca.png"
-                   VerticalOptions="Fill"/>
-           
-            <Image Source="fumaca.png"
-                   VerticalOptions="Fill"/>
+                     <Image Source="bola_do_dragao.png"
+                            Opacity="0.4"
+                            VerticalOptions="StartAndExpand"/>
 
-        </HorizontalStackLayout>
+                     <Image Source="bola_do_dragao.png"
+                            Opacity="0.4"
+                            VerticalOptions="StartAndExpand"/>
 
-        <HorizontalStackLayout x:Name="HSLayerPrimalfloor">
+                     <Image Source="bola_do_dragao.png"
+                            Opacity="0.4"
+                            VerticalOptions="StartAndExpand"/>
 
-          
-           <Image Source="chao.png"
-                   VerticalOptions="EndAndExpand"
-                   Margin="0,50,0,0"/>
-            
-            <Image Source="chao.png"
-                   VerticalOptions="EndAndExpand"
-                   Margin="0,50,0,0"/>
-            
-            <Image Source="chao.png"
-                   VerticalOptions="EndAndExpand"
-                   Margin="0,50,0,0"/>
+              </HorizontalStackLayout>
 
-        </HorizontalStackLayout>
-    </Grid>
+              <HorizontalStackLayout x:Name="HSLayerThree">
+
+
+                     <Image Source="montanhas.png"
+                            VerticalOptions="Fill"/>
+
+                     <Image Source="montanhas.png"
+                            VerticalOptions="Fill"/>
+
+                     <Image Source="montanhas.png"
+                            VerticalOptions="Fill"/>
+
+              </HorizontalStackLayout>
+
+              <HorizontalStackLayout x:Name="HSLayerPrimalfloor">
+
+
+                     <Image Source="chao.png"
+                            VerticalOptions="End"
+                            Margin="0,0,0,0"/>
+
+                     <Image Source="chao.png"
+                            VerticalOptions="End"
+                            Margin="0,50,0,0"/>
+
+                     <Image Source="chao.png"
+                            VerticalOptions="End"
+                            Margin="0,50,0,0"/>
+
+              </HorizontalStackLayout>
+       </Grid>
 </ContentPage>
