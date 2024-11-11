@@ -6,7 +6,7 @@
              Background="Black">
 
        <Grid>
-              <HorizontalStackLayout x:Name="HSLayerOne">
+              <HorizontalStackLayout x:Name="HsOne">
 
                      <Image Source="fundo.png"
                             Aspect="AspectFill"/>
@@ -19,7 +19,7 @@
 
               </HorizontalStackLayout>
 
-              <HorizontalStackLayout x:Name="HSLayerTwo">
+              <HorizontalStackLayout x:Name="HsTwo">
 
 
                      <Image Source="bola_do_dragao.png"
@@ -36,7 +36,7 @@
 
               </HorizontalStackLayout>
 
-              <HorizontalStackLayout x:Name="HSLayerThree">
+              <HorizontalStackLayout x:Name="HsThree">
 
 
                      <Image Source="montanhas.png"
@@ -50,7 +50,9 @@
 
               </HorizontalStackLayout>
 
-              <HorizontalStackLayout x:Name="HSLayerPrimalfloor">
+              
+
+              <HorizontalStackLayout x:Name="Hsfour">
 
 
                      <Image Source="chao.png"
@@ -66,5 +68,16 @@
                             Margin="0,50,0,0"/>
 
               </HorizontalStackLayout>
+
+              <HorizontalStackLayout x:Name="HsDoGoku">
+                     <Image Source="goku01.png"
+                            VerticalOptions="End"
+                            HeightRequest="150"
+                            WidthRequest="150"
+                            Margin="0,0,0,150"/>
+              </HorizontalStackLayout>
+              
+               
+
        </Grid>
 </ContentPage>

@@ -1,65 +1,77 @@
+namespace pulinho;
+
 public class Animacao
 {
-    protected List<String> AnimationOne = new List<String>();
-    protected List<String> AnimationTwo = new List<String>();
-    protected List<String> AnimationThree = new List<String>();
-    public bool Loop = true;
-    protected int AnimationTadalla = 1;
-    bool Brush = true;
-    int MainFrame = 1;
-    protected Image compImagem;
-    public Animacao(Image imagem)
+    protected List<string> animacao1 = new List<string>();
+    protected List<string> animacao2 = new List<string>();
+    protected List<string> animacao3 = new List<string>();
+    protected int animacaoAtiva = 1;
+    int frameAtual = 1;
+    protected bool loop = true;
+    bool parado = false;
+    protected CachedImage compImage;
+
+    public Animacao(CachedImage a)
     {
-        compImagem = imagem;
+        compImage = a;
     }
+
     public void Stop()
     {
-        Brush = true;
+        parado = true;
     }
+
     public void Play()
     {
-        Brush = false;
+        parado = false;
     }
-    public void SetAnimationTadalla(int A)
+
+    public void SetAnimacaoAtiva(int a)
     {
-        AnimationTadalla = A;
+        animacaoAtiva = a;
     }
-    public void Drawn()
+
+    public void Desenha()
     {
-        if (Brush)
+        if(parado)
             return;
-        string NomeArquivo = "";
-        int AnimationHeigth = 0;
-        if (AnimationTadalla == 1)
+        
+        string nomeArquivo = "goku";
+        int tamanhoAnimacao = 1;
+
+        if(animacaoAtiva == 1)
         {
-            NomeArquivo = AnimationOne[MainFrame];
-            AnimationHeigth = AnimationOne.Count;
+            nomeArquivo = animacao1[frameAtual];
+            tamanhoAnimacao = animacao1.Count;
         }
-        else if (AnimationTadalla == 2)
+        else if(animacaoAtiva == 2)
         {
-            NomeArquivo = AnimationTwo[MainFrame];
-            AnimationHeigth = AnimationTwo.Count;
+            nomeArquivo = animacao2[frameAtual];
+            tamanhoAnimacao = animacao2.Count;
         }
-        else if (AnimationTadalla == 3)
+        else if(animacaoAtiva == 3)
         {
-            NomeArquivo = AnimationThree[MainFrame];
-            AnimationHeigth = AnimationThree.Count;
+            nomeArquivo = animacao3[frameAtual];
+            tamanhoAnimacao = animacao3.Count;
         }
-        compImagem.Source = ImageSource.FromFile(NomeArquivo);
-        MainFrame++;
-        if (MainFrame >= AnimationHeigth)
+
+        compImage.Source = ImageSource.FromFile(nomeArquivo);
+        frameAtual++;
+
+        if(frameAtual >= tamanhoAnimacao)
         {
-            if (Loop)
-                MainFrame = 0;
+            if(loop)
+                frameAtual = 0;
             else
             {
-                Brush = true;
-                OnStop();
+                parado = true;
+                QuandoParar();
             }
         }
     }
-    public virtual void OnStop()
-    {
 
+    public virtual void QuandoParar()
+    {
+        
     }
 }

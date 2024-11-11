@@ -1,139 +1,119 @@
-﻿namespace Pulinho;
-
-public partial class MainPage : ContentPage
+﻿
+namespace Pulinho
 {
-	//Atributos//
-	//------------------------------------------------------------------------//
+    public partial class MainPage
+    {
+        private bool estaMorto = false;
+        private const int TempoEntreFrames = 15;
 
-	bool Faliceu = false;
-	// se está morto
+        private int velocidade;
+        private int velocidade1;
+        private int velocidade2;
+        private int velocidade3;
+        private int velocidade4;
 
-	bool Pulinho = false;
-	//se está pulando
+        public MainPage()
+        {
+            InitializeComponent();
+        }
 
-	//------------------------------------------------------------------------//
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _ = Desenha();
+        }
 
-	const int FPS = 25;
-	//fps
+        private async Task Desenha()
+        {
+            while (!estaMorto)
+            {
+                GerenciaCenarios();
+                player.Desenha();
+                await Task.Delay(TempoEntreFrames);
+            }
+        }
 
-	//------------------------------------------------------------------------//
+        protected override void OnSizeAllocated(double largura, double altura)
+        {
+            base.OnSizeAllocated(largura, altura);
+            CorrigeTamanhoCenario(largura);
+            CalculaVelocidade(largura);
+        }
 
-	int Speed1 = 0;
-	//velocidade da primeira camada no caso 
-	// a camada que fica por ultimo
+        private void CalculaVelocidade(double largura)
+        {
+            velocidade1 = (int)(largura * 1);
+            velocidade2 = (int)(largura * 2);
+            velocidade3 = (int)(largura * 3);
+            velocidade4 = (int)(largura * 5);
+            velocidade = (int)(largura *  6);
+        }
 
-	int Speed2 = 0;
-	//velocidade da segunda camada
+        private void CorrigeTamanhoCenario(double largura)
+        {
+            AjustaLarguraImagens(HsOne, largura);
+            AjustaLarguraImagens(HsTwo, largura);
+            AjustaLarguraImagens(HsThree, largura);
+            AjustaLarguraImagens(Hsfour, largura);
+            AjustaLarguraImagens(HsDoGoku, largura);
 
-	int Speed3 = 0;
-	// velocidade da terceira camada
+            HsOne.WidthRequest = largura * 1.5;
+            HsTwo.WidthRequest = largura * 1.5;
+            HsThree.WidthRequest = largura * 1.5;
+            Hsfour.WidthRequest = largura * 1.5;
+            HsDoGoku.WidthRequest = largura * 1.5;
+            
+        }
 
-	int SpeedChao_Boneco = 0;
-	//velocidade do chão ou do boneco tbm
+        private void AjustaLarguraImagens(HorizontalStackLayout stackLayout, double largura)
+        {
+            foreach (var elemento in stackLayout.Children)
+            {
+                if (elemento is Image imagem)
+                {
+                    imagem.WidthRequest = largura;
+                }
+            }
+        }
 
-	int altura = 0;
-	//altura da janela 
+        private void GerenciaCenarios()
+        {
+            MoveCenario();
+            GerenciaCenario(HsOne);
+            GerenciaCenario(HsTwo);
+            GerenciaCenario(HsThree);
+            GerenciaCenario(Hsfour);
+            GerenciaCenario(HsDoGoku);
+           
+        }
 
-	int largura = 0;
-	//largura da janela
+        private void MoveCenario()
+        {
+            HsOne.TranslationX -= velocidade1;
+            HsTwo.TranslationX -= velocidade2;
+            HsThree.TranslationX -= velocidade3;
+            Hsfour.TranslationX -= velocidade4;
+            HsDoGoku.TranslationX -= velocidade3;
+            
+        }
 
-	//------------------------------------------------------------------------//
+        private void GerenciaCenario(HorizontalStackLayout stackLayout)
+        {
+            if (stackLayout.Children.FirstOrDefault() is Image view &&
+                view.WidthRequest + stackLayout.TranslationX < 0)
+            {
+                stackLayout.Children.Remove(view);
+                stackLayout.Children.Add(view);
+                stackLayout.TranslationX = view.TranslationX;
+            }
+        }
+    }
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
-
-
-	//------------------------------------------------------------------------//
-
-
-
-	//------------------------------------------------------------------------//
-	protected override void OnSizeAllocated(double w, double h)
-	{
-		base.OnSizeAllocated(w, h);
-		FixScreenSize(w, h);
-		CalculateSpeed(w);
-	}
-
-	protected override void OnAppearing()
-	{
-		base.OnAppearing();
-		Drawn();
-	}
-	//------------------------------------------------------------------------//
-
-	void FixScreenSize(double w, double h)
-	{
-		foreach (var A in HSLayerOne.Children)
-			(A as Image).WidthRequest = w;
-		foreach (var A in HSLayerTwo.Children)
-			(A as Image).WidthRequest = w;
-		foreach (var A in HSLayerThree.Children)
-			(A as Image).WidthRequest = w;
-		foreach (var A in HSLayerPrimalfloor.Children)
-			(A as Image).WidthRequest = w;
-
-		HSLayerOne.WidthRequest = w * 1.5;
-		HSLayerTwo.WidthRequest = w * 1.5;
-		HSLayerThree.WidthRequest = w * 1.5;
-		HSLayerPrimalfloor.WidthRequest = w * 1.5;
-	}
-
-	//------------------------------------------------------------------------//
-	void CalculateSpeed(double w)
-	{
-		Speed1 = (int)(w * 0.001);
-		Speed2 = (int)(w * 0.004);
-		Speed3 = (int)(w * 0.008);
-		SpeedChao_Boneco = (int)(w * 0.01);
-	}
-
-	//------------------------------------------------------------------------//
-	async Task Drawn()
-	{
-		while (!Faliceu)
-		{
-			ManageScenes();
-			await Task.Delay(FPS);
-		}
-	}
-
-	//------------------------------------------------------------------------//
-	void MoveScene()
-	{
-		HSLayerOne.TranslationX -= Speed1;
-		HSLayerTwo.TranslationX -= Speed2;
-		HSLayerThree.TranslationX -= Speed3;
-		HSLayerPrimalfloor.TranslationX -= SpeedChao_Boneco;
-	}
-
-	//------------------------------------------------------------------------//
-	void ManageScenes()
-	{
-		MoveScene();
-		ManageScene(HSLayerOne);
-		ManageScene(HSLayerTwo);
-		ManageScene(HSLayerThree);
-		ManageScene(HSLayerPrimalfloor);
-	}
-
-
-	//------------------------------------------------------------------------//
-
-	void ManageScene(HorizontalStackLayout HSL)
-	{
-		var view = (HSL.Children.First() as Image);
-		if (view.WidthRequest + HSL.TranslationX < 0)
-		{
-			HSL.Children.Remove(view);
-			HSL.Children.Add(view);
-			HSL.TranslationX = view.TranslationX;
-		}
-	}
-
-	
-
-	//------------------------------------------------------------------------//
+    internal class player
+    {
+        internal static void Desenha()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
